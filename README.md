@@ -2,4 +2,5 @@ Summer fun project 2025 :)
 
 SIDaiai. Modern SID player.
 
-Assets from HVSC
+JSSid by Hermes
+Assets from High Voltage SID Collection: hvsc.c64.org
