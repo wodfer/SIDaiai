@@ -41,7 +41,7 @@ const SIDTrackList: React.FC<SIDTrackListProps> = ({
   };
 
   const handleDownload = (sidFile: SIDFile) => {
-    window.open(sidFile.github_url, '_blank');
+    window.open(sidFile.storage_url, '_blank');
   };
 
   return (

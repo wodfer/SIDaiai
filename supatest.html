@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Supabase Storage Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <h1>Supabase Storage List Test</h1>
+  <div>
+    <label>Path in bucket: <input id="path" value="" /></label>
+    <button onclick="listFiles()">List Files</button>
+  </div>
+  <pre id="output"></pre>
+  <script>
+    // --- CONFIGURE THESE ---
+    const SUPABASE_URL = 'https://mecrdveeocgjsmmigdzb.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_jmK2qZK_oQARl1GtG5_9cQ__ryg3Drt';
+    const BUCKET_NAME = 'sids'; // Change if your bucket is named differently
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function listFiles() {
+      const path = document.getElementById('path').value;
+      const { data, error } = await supabase.storage.from(BUCKET_NAME).list(path, {
+        limit: 100,
+        offset: 0,
+      });
+      document.getElementById('output').textContent =
+        error
+          ? 'Error: ' + JSON.stringify(error, null, 2)
+          : JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>

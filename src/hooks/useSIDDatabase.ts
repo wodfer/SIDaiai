@@ -5,7 +5,7 @@ export interface SIDFile {
   id: number;
   filename: string;
   file_path: string;
-  github_url: string;
+  storage_url: string;
   title: string;
   artist: string;
   copyright?: string;
@@ -61,7 +61,7 @@ export const useSIDDatabase = () => {
     }
   };
 
-  const syncFromGitHub = async () => {
+  const syncFromSupabaseStorage = async () => {
     try {
       setLoading(true);
       const { data, error } = await supabase.functions.invoke('fetch-sid-files');
@@ -89,6 +89,6 @@ export const useSIDDatabase = () => {
     error,
     fetchSIDFiles,
     fetchArtists,
-    syncFromGitHub
+    syncFromSupabaseStorage
   };
 };

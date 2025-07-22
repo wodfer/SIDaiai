@@ -49,7 +49,7 @@ export const useSIDPlayer = () => {
 
   const loadSIDFile = useCallback(async (sidFile: SIDFile) => {
     try {
-      await sidPlayer.loadTrackFromUrl(sidFile.github_url);
+      await sidPlayer.loadTrackFromUrl(sidFile.storage_url);
       
       const track: Track = {
         id: sidFile.id.toString(),

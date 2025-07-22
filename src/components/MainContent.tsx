@@ -21,11 +21,11 @@ const MainContent: React.FC<MainContentProps> = ({ searchQuery, currentView }) =
   const { isConnected } = useChromecast();
   const { allTracks, recentTracks, getLikedTracks, searchTracks } = useTrackData();
   const { loadAndPlayTrack, isPlaying, currentTrack } = useSIDPlayer();
-  const { sidFiles, loading, syncFromGitHub } = useSIDDatabase();
+  const { sidFiles, loading, syncFromSupabaseStorage } = useSIDDatabase();
 
   const handleSync = async () => {
     try {
-      await syncFromGitHub();
+      await syncFromSupabaseStorage();
     } catch (error) {
       console.error('Sync failed:', error);
     }
